@@ -1,0 +1,76 @@
+{
+  "name": "ratekeeper",
+  "version": "0.1.0",
+  "description": "Small, fully typed rate limiting for Node and edge runtimes: four algorithms, pluggable stores, framework adapters, zero dependencies.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "bench": "vitest bench --run",
+    "prepublishOnly": "npm run lint && npm run typecheck && npm test && npm run build"
+  },
+  "keywords": [
+    "rate-limit",
+    "rate-limiter",
+    "throttle",
+    "token-bucket",
+    "sliding-window",
+    "fixed-window",
+    "express",
+    "cloudflare-workers",
+    "typescript"
+  ],
+  "author": "Minhaz Rajib",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MinhazRajib/ratekeeper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MinhazRajib/ratekeeper/issues"
+  },
+  "homepage": "https://github.com/MinhazRajib/ratekeeper#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.3",
+    "@vitest/coverage-v8": "^4.1.11",
+    "eslint": "^10.11.0",
+    "prettier": "^3.9.9",
+    "tinybench": "^6.2.0",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.0",
+    "vitest": "^4.1.11"
+  }
+}
